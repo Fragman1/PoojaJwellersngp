@@ -2,8 +2,11 @@
   {
     "origin": [
       "http://localhost:3000",
+      "http://localhost:3001",
       "http://127.0.0.1:3000",
-      "https://poojajewellersngp.com"
+      "https://poojajewellersngp.com",
+      "https://www.poojajewellersngp.com",
+      "https://admin.poojajewellersngp.com"
     ],
     "method": ["GET", "POST", "PUT", "DELETE", "HEAD", "OPTIONS"],
     "maxAgeSeconds": 3600,

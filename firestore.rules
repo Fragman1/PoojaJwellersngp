@@ -4,7 +4,10 @@ service cloud.firestore {
     
     // Replace YOUR_ADMIN_UID_HERE with your actual Firebase Auth UID before deploying.
     function isAdmin() {
-      return request.auth != null && request.auth.uid == 'Ke4wsFZkboOLInp9oS9KMj2QGqg1';
+      return request.auth != null && (
+        request.auth.uid == 'Ke4wsFZkboOLInp9oS9KMj2QGqg1' ||
+        request.auth.uid == 'y7IaZyd6LdPbFPnoGhmC0nSpzhG2'
+      );
     }
 
     // Public can read, only Admin can write

@@ -1,15 +1,13 @@
 rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
-    // Replace YOUR_ADMIN_UID_HERE with your actual Firebase Auth UID before deploying.
-    function isAdmin() {
-      return request.auth != null && request.auth.uid == 'Ke4wsFZkboOLInp9oS9KMj2QGqg1';
-    }
-
     match /{allPaths=**} {
-      // Public can view images, only Admin can upload/delete
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if request.auth != null && (
+        request.auth.uid == 'Ke4wsFZkboOLInp9oS9KMj2QGqg1' ||
+        request.auth.uid == 'y7IaZyd6LdPbFPnoGhmC0nSpzhG2'
+      );
     }
   }
 }
+

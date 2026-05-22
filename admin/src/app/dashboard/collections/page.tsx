@@ -392,7 +392,12 @@ export default function CollectionsPage() {
       setFile(null); setPreview(null); setProgress(0);
       if (fileRef.current) fileRef.current.value = "";
       fetchItems();
-    } catch { setError("Upload failed. Ensure Firebase Storage is enabled."); }
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : String(err);
+      console.error("Upload error:", err);
+      console.error("Storage bucket:", process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET);
+      setError(`Upload failed: ${msg}`);
+    }
     finally { setUploading(false); }
   }
 
